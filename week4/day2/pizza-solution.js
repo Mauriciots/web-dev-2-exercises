@@ -49,7 +49,9 @@ class Pizza {
     this.type = type;
   }
   set size(size) {
-    this._size = size;
+    if (size === 's' || size === 'm' || size === 'l') {
+      this._size = size;
+    }
   }
   get size() {
     return this._size;
@@ -79,19 +81,19 @@ class Pizza {
   }
 }
 
-let pizza1 = new Pizza('large', 'veggie');
+let pizza1 = new Pizza('l', 'veggie');
+
+pizza1.size = 'r';
+console.log('get size', pizza1.size);
+pizza1._size = 'r'; // bad practice
+console.log('get size after set', pizza1.size);
+
 // let toppings = ['tomato', 'olives', 'spinach', 'pinapple'];
 // pizza1.addToppings(toppings).then((i) => {
 //   setTimeout(() => {
 //     pizza1.bake();
 //   }, 500 * (i + 1));
 // });
-
-// pizza1.size = 'm';
-// console.log(pizza1.size);
-// pizza1._size = 'l'; // bad practice
-// console.log(pizza1.size);
-
 // const obj = {};
 
 // function createObj() {
